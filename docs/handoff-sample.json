@@ -1,0 +1,47 @@
+{
+  "_comment": "交接物样例：下游只认这份文件，不认对话里的口头完成。字段固定，缺项即视为交接无效。",
+  "handoff": {
+    "task_id": "T-2026-1104-003",
+    "from_stage": "architecture_review",
+    "to_stage": "writing",
+    "produced_at_ms": 1793800000000,
+    "changed": [
+      {
+        "path": "settings/characters.json",
+        "entry_id": "C001",
+        "from_version": 3,
+        "to_version": 4,
+        "diff": "右眼受创改为双目受创；佩戴物由玄铁单目罩改为玄铁眼罩（双侧）"
+      }
+    ],
+    "depends_on": [
+      { "entry_id": "C001", "version": 4 },
+      { "entry_id": "W002", "version": 1 }
+    ],
+    "stale_artifacts": [
+      "outputs/chapter-03.md",
+      "outputs/cards/characters.md"
+    ],
+    "acceptance": [
+      "outputs/chapter-03.md 中出现眼罩的句子必须为双侧表述",
+      "outputs/cards/characters.md 的 C001 条目版本须为 4",
+      "不得引用已标 stale 的旧结论"
+    ],
+    "artifacts": [
+      {
+        "logical_path": "outputs/chapter-03.md",
+        "sha256": "REPLACE_WITH_REAL_HASH",
+        "bytes": 0
+      }
+    ],
+    "verdict": "ready_for_next_stage"
+  },
+  "_rules": [
+    "changed：必须写清改了什么。没有 diff 的版本变更等于没有交接。",
+    "depends_on：下游要能据此判断自己依赖的条目是否已更新。",
+    "stale_artifacts：上游改了什么，这批产物就必须重算，不能沿用。",
+    "acceptance：可判据，不用形容词；能机器判的写机器判，判不了的明说人审。",
+    "artifacts：哈希是产物的身份，不是质量的证明；存在且哈希匹配才叫交付。",
+    "verdict：只有 ready_for_next_stage 才能推进，其余一律返回同一环节。"
+  ]
+}

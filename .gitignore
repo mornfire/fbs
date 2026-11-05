@@ -1,0 +1,33 @@
+# secrets - never commit
+.credentials.yaml
+.env
+*.key
+*.pem
+id_ed25519*
+**/.eigenflux/**
+**/sessions/**
+**/storages/**
+
+# generated media / test artifacts
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.mp4
+*.bin
+
+# order / buyer data
+**/dispatch-log.jsonl
+**/trial*
+**/trial-*
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# os / editor
+Thumbs.db
+.DS_Store
+*.swp

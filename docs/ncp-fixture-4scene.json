@@ -1,0 +1,75 @@
+{
+  "_comment": "NCP-Bench 风格 4 场景 fixture 设计（公开安全，无真实作品）。目标：覆盖角色知识隔离、合法绕路正控、未知事实使用、物理不可达与汇合后果。",
+  "fixture_id": "ncp4-flameblingstar-001",
+  "ledger_initial": {
+    "facts": [
+      { "id": "F001", "text": "A 与 B 是同一商队的护卫，互不信任但受雇于同一雇主", "known_by": ["A", "B"] },
+      { "id": "F002", "text": "货物中有一件封存木匣，雇主禁止开启", "known_by": ["A", "B"] },
+      { "id": "F003", "text": "木匣内是一只断指，属于雇主的兄长", "known_by": [] }
+    ],
+    "invariants": ["同一时刻 A 与 B 不得同时进入货舱", "木匣不得被开启"],
+    "commitments": ["A 承诺在第 3 场景前不向 B 透露 F003"],
+    "trajectory": ["场景1", "场景2"]
+  },
+  "scenes": [
+    {
+      "scene": "场景 1 · 角色知识隔离",
+      "input": "A 独自在货舱发现木匣夹层留有血指印，并在夹层内侧刻有雇主的姓氏。B 在舱外等候。",
+      "user_action": "A 将夹层恢复原状，未告知 B。",
+      "expected": {
+        "candidate_state_changes": [
+          "新增事实 F004：木匣夹层有血指印与雇主姓氏，known_by=[A]"
+        ],
+        "audit": "PASS",
+        "must_not": ["把 F004 写入 B 的 known_by", "在不经审计的情况下直接提交账本"]
+      }
+    },
+    {
+      "scene": "场景 2 · 合法绕路正控（正控样本）",
+      "input": "玩家选择先绕道市集购买灯油，再返回营地取货。",
+      "user_action": "玩家放弃最快路径，但目标（在入夜前取回货物）仍达成。",
+      "expected": {
+        "candidate_state_changes": [
+          "轨迹记录顺序不同：市集 → 营地；成就保持同一枚「入夜前取回货物」"
+        ],
+        "audit": "PASS",
+        "must_not": ["把绕路判为冲突或不合法", "因轨迹不同而否定同一成就"]
+      }
+    },
+    {
+      "scene": "场景 3 · 未知事实使用（不可判定样本）",
+      "input": "B 在对话中说：「你哥哥的断指，你打算怎么交代？」",
+      "user_action": "无。",
+      "expected": {
+        "audit": "UNDECIDABLE",
+        "reason": "F003 当前 known_by 为空，B 不可能知道木匣内是断指；但「B 如何得知」本身缺少账本事实，无法判定是剧情漏洞还是尚未交代的伏笔。",
+        "must_not": ["判为 PASS（把缺事实当无事）", "判为 FAIL（把缺事实当冲突）"],
+        "resolution": "需额外事实说明 B 的信息来源，或调整对白使 B 不知情"
+      }
+    },
+    {
+      "scene": "场景 4 · 物理不可达与汇合后果（硬失败样本）",
+      "input": "剧本要求 A 与 B 同时在货舱内对峙，而上一场景已确认 A 在城外、B 在舱内且城门已闭。",
+      "user_action": "玩家选择连夜翻墙返回。",
+      "expected": {
+        "audit": "FAIL",
+        "failed_invariant": "同一时刻 A 与 B 不得同时进入货舱 / 城门已闭导致 A 物理不可达",
+        "must_provide": {
+          "first_to_arrive": "B（已在舱内）",
+          "minimal_repair": "或延长一夜时间并交代翻墙代价，或让 C 代 A 进入货舱"
+        },
+        "must_not": ["仅输出 FAIL 而不指明破的是哪条不变量", "自动改写剧情掩盖冲突"]
+      }
+    }
+  ],
+  "_grading": {
+    "denominator": "按场景计 4 个应检单元，不按对白轮次计",
+    "pass_criteria": "四个场景的 audit 判定全部命中期望值（PASS / PASS / UNDECIDABLE / FAIL）",
+    "negative_control": "场景 3 是本夹具的负控核心：把缺事实判成 PASS 或 FAIL 的实现，即使前两场全对，也应判该实现未通过",
+    "known_limits": [
+      "单线程线性叙事，未覆盖多角色并行分支",
+      "审计器仍是模型，判定本身需人审复核",
+      "不评价人物魅力、戏剧张力或商业效果"
+    ]
+  }
+}
