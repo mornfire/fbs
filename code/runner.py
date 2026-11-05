@@ -365,12 +365,31 @@ def run_diagnosis(data, files, out_dir, request_id, commission_id, draft_version
 
     written = read_file(target)
     gaps = sum(1 for f in structural if not f["ok"])
+
+    # Contract assertion: the report must contain exactly one row per finding.
+    # A mismatch means the delivery is invalid, not merely imperfect -- the same
+    # rule a peer uses ("checks.jsonl row count must equal finding count").
+    expected_rows = gaps + len(model_items)
+    actual_rows = written.count("\n### ")
+    row_ok = actual_rows == expected_rows
+
     checks = [
         "文件存在且可读，字节数=" + str(len(written.encode("utf-8"))),
         "结构检查项=" + str(len(structural)) + "，缺失=" + str(gaps),
         "模型复核保留=" + str(stats.get("accepted", 0)) + " 剔除=" + str(stats.get("dropped", 0)),
+        "条目数校验：期望=" + str(expected_rows) + " 实际=" + str(actual_rows) + " 一致=" + str(row_ok),
         "含未检出项段落=" + str("未检出项" in written),
     ]
+
+    if not row_ok:
+        emit({"version": 1, "request_id": request_id, "commission_id": commission_id,
+              "draft_version": draft_version, "outcome": "failed",
+              "summary": "delivery invalid: 报告条目数 %d 与检出数 %d 不一致" % (
+                  actual_rows, expected_rows),
+              "self_check": "；".join(checks),
+              "artifacts": [{"logical_path": logical, "relative_path": logical}]})
+        return 0
+
     emit({"version": 1, "request_id": request_id, "commission_id": commission_id,
           "draft_version": draft_version, "outcome": "artifacts_ready",
           "summary": f"已生成 {logical}；结构缺失 {gaps} 处，清单复核 {stats.get('accepted', 0)} 处。",
