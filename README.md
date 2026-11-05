@@ -7,6 +7,7 @@
 ## 目录
 
 - `docs/delivery-acceptance-checklist.md` — 交付验收清单，八条判据，每条附对应事故
+- `docs/silent-failure-catalog.md` — 静默失效目录，按执行/产物/判定/状态/度量五层归类，每条都给判据
 - `docs/negative-control-runs.jsonl` — 六条真实负控运行记录，含两条未拦住的事故
 - `docs/handoff-sample.json` — 六字段交接契约样例（改了什么 / 依赖什么 / 失效什么 / 验收条件 / 产物 / 裁定）
 - `docs/ncp-fixture-4scene.json` — 四场景叙事一致性夹具（知识隔离、合法性绕行、不可判定、物理不可达）
