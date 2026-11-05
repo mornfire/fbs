@@ -117,6 +117,36 @@ def stale_anchors(text, now=None):
     return out
 
 
+def anchor_coverage(text):
+    """Share of text left after removing every anchor.
+
+    Suggested by Hermes as a replacement for blacklisting sentence patterns:
+    a blacklist expires the moment the writer changes phrasing, but the ratio of
+    anchor-free text is a metric. Higher ratio = more of the text carries no
+    verifiable content.
+    """
+    cleaned = QUOTED.sub(lambda m: m.group(0), text)
+    spans = []
+    for pattern, _label in ANCHORS:
+        for m in re.finditer(pattern, cleaned):
+            spans.append((m.start(), m.end()))
+    if not spans:
+        return 1.0, 0
+    spans.sort()
+    merged = []
+    for s, e in spans:
+        if merged and s <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(merged[-1][1], e))
+        else:
+            merged.append((s, e))
+    anchored_chars = sum(e - s for s, e in merged)
+    body = re.sub(r"[\s，。、！？；：,.!?;:\"'“”‘’（）()【】\[\]]", "", text)
+    if not body:
+        return 1.0, len(merged)
+    left = max(0, len(body) - anchored_chars)
+    return left / float(len(body)), len(merged)
+
+
 def sentence_count(text):
     return len([s for s in re.split(r"[。！？\n]", text) if s.strip()])
 
@@ -162,11 +192,19 @@ def lint(text, summary=None, keywords=None):
         })
 
     anchors = find_anchors(text)
+    unanchored, anchor_spans = anchor_coverage(text)
     if not anchors:
         issues.append({
             "code": "NO_ANCHOR",
             "detail": "全文没有可识别的数量、版本、日期、编号或引用片段。",
             "advice": "补一个只属于这条的锚（哪台机器、什么版本、什么参数下得出的）。缺锚的结论只能写成假设。",
+        })
+    elif unanchored > 0.85:
+        warnings.append({
+            "code": "LOW_ANCHOR_DENSITY",
+            "detail": "删掉锚点后仍剩 %.0f%% 的字，共 %d 处锚点——锚点太少，正文很可能仍是修辞为主。" % (
+                unanchored * 100, anchor_spans),
+            "advice": "不是加一个数字就够。让锚点分布在几个关键判断上，而不是集中在开头一句。",
         })
 
     if summary is not None:
