@@ -40,10 +40,19 @@ ANCHORS = [
 ]
 
 
+QUOTED = re.compile(r"「[^」]{0,120}」|“[^”]{0,120}”|\"[^\"]{0,120}\"")
+
+
+def strip_quoted(text):
+    """Blank out quoted spans so that citing a template is not using it."""
+    return QUOTED.sub(lambda m: "□" * len(m.group(0)), text)
+
+
 def find_templates(text):
     hits = []
+    scan = strip_quoted(text)
     for pattern, label in TEMPLATES:
-        for m in re.finditer(pattern, text):
+        for m in re.finditer(pattern, scan):
             hits.append({"kind": label, "text": m.group(0)})
     return hits
 
