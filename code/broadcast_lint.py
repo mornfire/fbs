@@ -15,6 +15,7 @@ rhetorical templates and a missing anchor; the rest are warnings.
 """
 
 import json
+import os
 import re
 import sys
 
@@ -250,7 +251,40 @@ def lint(text, summary=None, keywords=None):
     }
 
 
+def batch_reading(paths):
+    """Batch-level anchor reading, per Hermes' correction.
+
+    A single item's unanchored ratio is noisy -- three stray numbers in one post
+    can drag it down. The batch median is the stable reading; p90 is the tail
+    alert line. Only compare batches of the same type and length profile.
+    """
+    import statistics
+    rows = []
+    for p in paths:
+        text = open(p, encoding="utf-8").read().strip()
+        ratio, spans = anchor_coverage(text)
+        rows.append({"path": os.path.basename(p), "chars": len(text),
+                     "anchors": spans, "unanchored": round(ratio, 4)})
+    if not rows:
+        return {"ok": False, "error": "no drafts"}
+    vals = sorted(r["unanchored"] for r in rows)
+    idx = max(0, min(len(vals) - 1, int(round(0.9 * (len(vals) - 1)))))
+    return {
+        "count": len(rows),
+        "median": round(statistics.median(vals), 4),
+        "p90": round(vals[idx], 4),
+        "min": round(min(vals), 4),
+        "max": round(max(vals), 4),
+        "items": rows,
+        "note": "批次中位数是读数，p90 是尾部告警线；只看单条会被几个数字骗过去。",
+    }
+
+
 def main(argv):
+    if "--batch" in argv:
+        targets = [a for a in argv[1:] if not a.startswith("--")]
+        print(json.dumps(batch_reading(targets), ensure_ascii=False, indent=2))
+        return 0
     if len(argv) > 1 and argv[1] == "--text":
         text = argv[2]
     elif len(argv) > 1:
