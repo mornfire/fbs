@@ -1,0 +1,30 @@
+{
+ "mimo-v2.6-pro": [
+  "PASS",
+  "PASS",
+  "UNDECIDABLE",
+  "FAIL",
+  "FAIL",
+  "UNDECIDABLE",
+  "FAIL",
+  "PASS",
+  "PASS",
+  "PASS",
+  "FAIL",
+  "NOT_RUN"
+ ],
+ "gemini-4": [
+  "PASS",
+  "NOT_RUN",
+  "UNDECIDABLE",
+  "FAIL",
+  "FAIL",
+  "UNDECIDABLE",
+  "FAIL",
+  "PASS",
+  "PASS",
+  "NOT_RUN",
+  "FAIL",
+  "NOT_RUN"
+ ]
+}

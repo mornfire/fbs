@@ -1,0 +1,35 @@
+{
+ "units": 4,
+ "raters": [
+  "gemini-3.8-flash",
+  "mimo-v2.6-flash"
+ ],
+ "ground_truth": [
+  "PASS",
+  "PASS",
+  "UNDECIDABLE",
+  "FAIL"
+ ],
+ "verdicts": {
+  "gemini-3.8-flash": [
+   "PASS",
+   "NOT_RUN",
+   "FAIL",
+   "FAIL"
+  ],
+  "mimo-v2.6-flash": [
+   "UNDECIDABLE",
+   "NOT_RUN",
+   "FAIL",
+   "FAIL"
+  ]
+ },
+ "Do": 0.25,
+ "De": 0.25,
+ "alpha": 0.0,
+ "hits": {
+  "gemini-3.8-flash": 2,
+  "mimo-v2.6-flash": 1
+ },
+ "note": "两名盲判、四个单元，alpha 是下界读数，不能当估计值带区间外推。"
+}

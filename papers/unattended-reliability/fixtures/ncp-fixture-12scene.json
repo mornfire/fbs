@@ -1,0 +1,281 @@
+{
+ "_comment": "12 场景盲判夹具。给裁定者的版本只包含 ledger 与 scenes[].input/action，不含 expected。expected 仅用于事后计分。",
+ "fixture_id": "ncp12-flameblingstar-v1",
+ "ledger": {
+  "facts": [
+   {
+    "id": "F001",
+    "text": "A（陆巡）与 B（李恪）是同一商队的护卫，互不信任，受雇于同一雇主",
+    "known_by": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "id": "F002",
+    "text": "货物中有一件封存木匣，雇主禁止开启",
+    "known_by": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "id": "F003",
+    "text": "木匣内是一只断指，属于雇主的兄长",
+    "known_by": []
+   },
+   {
+    "id": "F004",
+    "text": "木匣夹层有血指印，夹层内侧刻有雇主的姓氏",
+    "known_by": [
+     "A"
+    ]
+   }
+  ],
+  "invariants": [
+   "同一时刻 A 与 B 不得同时进入货舱",
+   "木匣不得被开启",
+   "在场角色必须已在人物表中登记"
+  ],
+  "commitments": [
+   {
+    "id": "C001",
+    "promised_by": "A",
+    "text": "第 3 场景前不向 B 透露 F003"
+   },
+   {
+    "id": "C002",
+    "promised_by": "B",
+    "text": "入夜前把货物清单交给雇主",
+    "due": "入夜"
+   }
+  ],
+  "characters": [
+   "A（陆巡）",
+   "B（李恪）",
+   "雇主"
+  ],
+  "trajectory_so_far": [
+   "场景0：商队抵达城外营地"
+  ]
+ },
+ "scenes": [
+  {
+   "id": 1,
+   "input": "A 独自进入货舱，发现木匣夹层留有血指印，夹层内侧刻着雇主的姓氏。B 在舱外等候。",
+   "action": "A 将夹层恢复原状，未告知 B。",
+   "expected": "PASS",
+   "why": "新增 F004 且 known_by 只有 A，符合知识隔离；不变量未被破坏。",
+   "prerequisite_facts": [
+    {
+     "need": "F004 木匣夹层血指印（由本场景产生，仅 A 知情）",
+     "in_ledger": true,
+     "ref": "F004"
+    }
+   ],
+   "assertions": [
+    "夹层留有血指印",
+    "夹层内侧刻有雇主姓氏"
+   ]
+  },
+  {
+   "id": 2,
+   "input": "玩家选择先绕道市集购买灯油，再返回营地取货。",
+   "action": "玩家放弃最快路径，仍在入夜前取回货物。",
+   "expected": "PASS",
+   "why": "正控：路径不同但目标达成，审计器应判通过而非冲突。",
+   "prerequisite_facts": [],
+   "assertions": [
+    "玩家绕道市集买灯油",
+    "货物仍在入夜前取回"
+   ]
+  },
+  {
+   "id": 3,
+   "input": "B 在对话中说：「你哥哥的断指，你打算怎么交代？」",
+   "action": "无。",
+   "expected": "UNDECIDABLE",
+   "why": "F003 的 known_by 为空，B 无从得知；但 B 如何得知的方式账本未载，无法判定是漏洞还是未交代的伏笔。",
+   "prerequisite_facts": [
+    {
+     "need": "B 如何得知 F003 内容的来源记载",
+     "in_ledger": false,
+     "ref": "none"
+    }
+   ],
+   "assertions": [
+    "B 说出「你哥哥的断指」"
+   ]
+  },
+  {
+   "id": 4,
+   "input": "剧本要求 A 与 B 同时在货舱内对峙。上一场景已确认 A 在城外、B 在舱内、城门已闭。",
+   "action": "玩家选择连夜翻墙返回。",
+   "expected": "FAIL",
+   "why": "违背不变量：同一时刻 A 与 B 不得同时在货舱，且翻墙代价未交代。",
+   "prerequisite_facts": [
+    {
+     "need": "A 在城外、B 在舱内、城门已闭（上一场景已确认）",
+     "in_ledger": true,
+     "ref": "scene4-context"
+    }
+   ],
+   "assertions": [
+    "剧本要求 A 与 B 同时在货舱对峙",
+    "上一场景确认 A 在城外、城门已闭"
+   ]
+  },
+  {
+   "id": 5,
+   "input": "入夜已久，B 仍未把货物清单交给雇主，场景中也没有解释原因。",
+   "action": "无。",
+   "expected": "FAIL",
+   "why": "承诺 C002 到期未兑现，且无任何说明，属承诺违约。",
+   "prerequisite_facts": [
+    {
+     "need": "承诺 C002 的期限为「靠岸前」",
+     "in_ledger": true,
+     "ref": "C002"
+    }
+   ],
+   "assertions": [
+    "靠岸时何九未提交货物清单",
+    "场景内没有解释"
+   ]
+  },
+  {
+   "id": 6,
+   "input": "叙述提到「三天前就已关闭的城门此刻大开着」。账本中从未记录过城门的开闭状态。",
+   "action": "无。",
+   "expected": "UNDECIDABLE",
+   "why": "账本缺城门状态事实，无法判定这句是新增设定还是与既有事实冲突。",
+   "prerequisite_facts": [
+    {
+     "need": "城门的开闭历史记录",
+     "in_ledger": false,
+     "ref": "none"
+    }
+   ],
+   "assertions": [
+    "城门被描述为「三天前就已关闭」",
+    "此处城门大开着"
+   ]
+  },
+  {
+   "id": 7,
+   "input": "A 从木匣中取出断指，递给雇主查看，木匣被打开。",
+   "action": "无。",
+   "expected": "FAIL",
+   "why": "直接违背不变量「木匣不得被开启」。",
+   "prerequisite_facts": [
+    {
+     "need": "不变量：木匣不得被开启",
+     "in_ledger": true,
+     "ref": "invariants[0]"
+    }
+   ],
+   "assertions": [
+    "陈屿撬开铁箱",
+    "取出断指递给雇主"
+   ]
+  },
+  {
+   "id": 8,
+   "input": "第 3 场景之后，A 主动告诉 B：「匣里是雇主的兄长的断指。」",
+   "action": "无。",
+   "expected": "PASS",
+   "why": "承诺 C001 的期限是第 3 场景之前，此时披露已过期限，合规；F003 的 known_by 应加入 B。",
+   "prerequisite_facts": [
+    {
+     "need": "承诺 C001 的期限为「第 3 场景前」",
+     "in_ledger": true,
+     "ref": "C001"
+    }
+   ],
+   "assertions": [
+    "A 告诉 B 匣内是断指"
+   ]
+  },
+  {
+   "id": 9,
+   "input": "B 对 A 说：「陆巡，这趟货我不放心。」",
+   "action": "无。",
+   "expected": "PASS",
+   "why": "A 的名字就是陆巡，称谓与人称一致。",
+   "prerequisite_facts": [],
+   "assertions": [
+    "B 称 A 为「陆巡」"
+   ]
+  },
+  {
+   "id": 10,
+   "input": "夜色深沉，远处传来更鼓。",
+   "action": "无。",
+   "expected": "NOT_RUN",
+   "why": "纯环境描写，不含可检验断言，不构成检查项。",
+   "prerequisite_facts": [],
+   "assertions": []
+  },
+  {
+   "id": 11,
+   "input": "C 代 A 进入货舱与 B 对峙。",
+   "action": "无。",
+   "expected": "FAIL",
+   "why": "违背不变量：在场角色必须已登记，而 C 不在人物表中。",
+   "prerequisite_facts": [
+    {
+     "need": "人物表中已登记的角色名单",
+     "in_ledger": true,
+     "ref": "characters"
+    }
+   ],
+   "assertions": [
+    "C 进入货舱与 B 对峙"
+   ]
+  },
+  {
+   "id": 12,
+   "input": "假设分支：若 A 当初没有撬开夹层，B 将始终不知道断指。此分支被明确标记为未发生。",
+   "action": "无。",
+   "expected": "PASS",
+   "why": "假设分支已显式标记为未发生，不与事实层冲突。",
+   "prerequisite_facts": [
+    {
+     "need": "该分支已被显式标注为未发生",
+     "in_ledger": true,
+     "ref": "scene12-text"
+    }
+   ],
+   "assertions": [
+    "假设分支：若 A 未撬开夹层，B 将不知断指",
+    "该分支已标注为未发生"
+   ]
+  }
+ ],
+ "_grading": {
+  "denominator": "12 个应检单元，按场景计",
+  "labels": [
+   "PASS",
+   "FAIL",
+   "UNDECIDABLE",
+   "NOT_RUN"
+  ],
+  "positive_controls": [
+   2,
+   8,
+   9,
+   12
+  ],
+  "negative_controls": [
+   3,
+   6,
+   10
+  ],
+  "hard_failures": [
+   4,
+   5,
+   7,
+   11
+  ]
+ }
+}

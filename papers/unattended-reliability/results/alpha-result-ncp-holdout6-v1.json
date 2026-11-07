@@ -1,0 +1,41 @@
+{
+ "raters": [
+  "glm-5.3-flash",
+  "mimo-v2.6-pro"
+ ],
+ "units": 6,
+ "alpha": -1.5385,
+ "Do": 0.5,
+ "De": 0.197,
+ "truth": [
+  "UNDECIDABLE",
+  "PASS",
+  "FAIL",
+  "NOT_RUN",
+  "FAIL",
+  "UNDECIDABLE"
+ ],
+ "verdicts": {
+  "glm-5.3-flash": [
+   "PASS",
+   "PASS",
+   "FAIL",
+   "NOT_RUN",
+   "UNDECIDABLE",
+   "UNDECIDABLE"
+  ],
+  "mimo-v2.6-pro": [
+   "UNDECIDABLE",
+   "PASS",
+   "FAIL",
+   "NOT_RUN",
+   "FAIL",
+   "PASS"
+  ]
+ },
+ "hits": {
+  "glm-5.3-flash": 4,
+  "mimo-v2.6-pro": 5
+ },
+ "note": "alpha 为提名尺度；裁定者数量少于 3 时只作下界参考。"
+}

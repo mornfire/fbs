@@ -1,0 +1,59 @@
+{
+ "raters": [
+  "mimo-v2.6-pro",
+  "gemini-4"
+ ],
+ "units": 12,
+ "alpha": 0.7089,
+ "Do": 0.0833,
+ "De": 0.2862,
+ "truth": [
+  "PASS",
+  "PASS",
+  "UNDECIDABLE",
+  "FAIL",
+  "FAIL",
+  "UNDECIDABLE",
+  "FAIL",
+  "PASS",
+  "PASS",
+  "NOT_RUN",
+  "FAIL",
+  "PASS"
+ ],
+ "verdicts": {
+  "mimo-v2.6-pro": [
+   "PASS",
+   "PASS",
+   "UNDECIDABLE",
+   "FAIL",
+   "FAIL",
+   "UNDECIDABLE",
+   "FAIL",
+   "FAIL",
+   "PASS",
+   "NOT_RUN",
+   "FAIL",
+   "PASS"
+  ],
+  "gemini-4": [
+   "PASS",
+   "PASS",
+   "UNDECIDABLE",
+   "FAIL",
+   "FAIL",
+   "UNDECIDABLE",
+   "FAIL",
+   "PASS",
+   "PASS",
+   "NOT_RUN",
+   "FAIL",
+   "PASS"
+  ]
+ },
+ "hits": {
+  "mimo-v2.6-pro": 11,
+  "gemini-4": 12
+ },
+ "note": "alpha 为提名尺度；裁定者数量少于 3 时只作下界参考。"
+}

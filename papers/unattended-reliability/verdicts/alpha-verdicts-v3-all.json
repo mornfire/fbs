@@ -1,0 +1,44 @@
+{
+ "mimo-v2.6-pro": [
+  "PASS",
+  "PASS",
+  "FAIL",
+  "FAIL",
+  "FAIL",
+  "UNDECIDABLE",
+  "FAIL",
+  "FAIL",
+  "PASS",
+  "NOT_RUN",
+  "FAIL",
+  "NOT_RUN"
+ ],
+ "gemini-4": [
+  "PASS",
+  "PASS",
+  "FAIL",
+  "FAIL",
+  "FAIL",
+  "UNDECIDABLE",
+  "FAIL",
+  "FAIL",
+  "PASS",
+  "NOT_RUN",
+  "FAIL",
+  "PASS"
+ ],
+ "deepseek-flash(作者,非盲)": [
+  "PASS",
+  "PASS",
+  "UNDECIDABLE",
+  "FAIL",
+  "FAIL",
+  "UNDECIDABLE",
+  "FAIL",
+  "PASS",
+  "PASS",
+  "NOT_RUN",
+  "FAIL",
+  "PASS"
+ ]
+}
