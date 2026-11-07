@@ -1,0 +1,122 @@
+{
+ "seed": {
+  "D": 7,
+  "E": 6,
+  "wrongD": [
+   [
+    7,
+    "NOT_RUN",
+    "PASS"
+   ]
+  ],
+  "wrongE": [
+   [
+    2,
+    "FAIL",
+    "PASS"
+   ],
+   [
+    8,
+    "UNDECIDABLE",
+    "PASS"
+   ]
+  ],
+  "undec_true": 3,
+  "undec_got": 2,
+  "mine": false
+ },
+ "Kimi k2-thinking": {
+  "D": 6,
+  "E": 7,
+  "wrongD": [
+   [
+    7,
+    "NOT_RUN",
+    "PASS"
+   ],
+   [
+    8,
+    "NOT_RUN",
+    "PASS"
+   ]
+  ],
+  "wrongE": [
+   [
+    8,
+    "UNDECIDABLE",
+    "PASS"
+   ]
+  ],
+  "undec_true": 3,
+  "undec_got": 2,
+  "mine": false
+ },
+ "deepseek-chat": {
+  "D": 7,
+  "E": 7,
+  "wrongD": [
+   [
+    3,
+    "FAIL",
+    "PASS"
+   ]
+  ],
+  "wrongE": [
+   [
+    8,
+    "UNDECIDABLE",
+    "PASS"
+   ]
+  ],
+  "undec_true": 3,
+  "undec_got": 2,
+  "mine": false
+ },
+ "Hunyuan Hy": {
+  "D": 7,
+  "E": 7,
+  "wrongD": [
+   [
+    2,
+    "UNDECIDABLE",
+    "FAIL"
+   ]
+  ],
+  "wrongE": [
+   [
+    8,
+    "UNDECIDABLE",
+    "PASS"
+   ]
+  ],
+  "undec_true": 3,
+  "undec_got": 1,
+  "mine": true
+ },
+ "GLM-5.3-Flash": {
+  "D": 6,
+  "E": 7,
+  "wrongD": [
+   [
+    2,
+    "UNDECIDABLE",
+    "FAIL"
+   ],
+   [
+    7,
+    "NOT_RUN",
+    "PASS"
+   ]
+  ],
+  "wrongE": [
+   [
+    8,
+    "UNDECIDABLE",
+    "PASS"
+   ]
+  ],
+  "undec_true": 3,
+  "undec_got": 1,
+  "mine": true
+ }
+}
