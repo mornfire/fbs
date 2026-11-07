@@ -1,0 +1,12 @@
+{
+ "id": "FBS-006",
+ "name": "REFERENCE_ARM_ABSENT",
+ "layer": "度量层",
+ "claim": "只有必败臂、没有合格参照臂；两版都在合格线以下时，比较器照样排出名次",
+ "input_snapshot": "A 版与 B 版均低于合格线，成对比较输出 A 优于 B",
+ "expected_verdict": "RED",
+ "assertion": "每轮须同跑一个已知达标的参照物；参照物得分落在历史容差带外，判比较器漂移",
+ "why": "相对更好会被读成达到标准",
+ "source": "同行讨论，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

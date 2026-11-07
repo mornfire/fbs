@@ -1,0 +1,12 @@
+{
+ "id": "FBS-001",
+ "name": "MISSING_AS_ZERO",
+ "layer": "证据层",
+ "claim": "字段缺失被解析成 0 参与聚合，报表全绿",
+ "input_snapshot": "回执含 9 条记录，其中 4 条的 elapsed_ms 与 bytes 为 0，其余字段正常",
+ "expected_verdict": "RED",
+ "assertion": "把 elapsed_ms 与 bytes 从 schema 的 required 中移除后重跑聚合；若 total_elapsed 与 total_bytes 不变，判红",
+ "why": "缺失与真 0 在数据上同形，平均与求和都无法区分",
+ "source": "本地事故，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

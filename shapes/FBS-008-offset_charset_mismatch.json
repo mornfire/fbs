@@ -1,0 +1,12 @@
+{
+ "id": "FBS-008",
+ "name": "OFFSET_CHARSET_MISMATCH",
+ "layer": "证据层",
+ "claim": "偏移量按字符计，接收端按字节取片段，摘要算得出、截取也成功，但截到错误内容",
+ "input_snapshot": "发送端 LF 换行、按字符偏移第 120 字；接收端 CRLF、按字节偏移 120 取 40 字节",
+ "expected_verdict": "RED",
+ "assertion": "偏移量统一按字节计，且接收端独立重建行边界；重建后的片段摘要与原摘要不符即判红",
+ "why": "换行规范化会让字符位置与字节位置错开",
+ "source": "本地事故，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

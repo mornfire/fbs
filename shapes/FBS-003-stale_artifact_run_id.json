@@ -1,0 +1,12 @@
+{
+ "id": "FBS-003",
+ "name": "STALE_ARTIFACT_RUN_ID",
+ "layer": "产物层",
+ "claim": "Run B 的回执成功，但产物解析到 Run A 同路径的旧文件",
+ "input_snapshot": "两轮运行共用同一输出路径；第二轮回执成功，产物 mtime 早于第二轮开始时间",
+ "expected_verdict": "RED",
+ "assertion": "产物指纹须绑 (run_id, 路径, 内容摘要) 三元组；解析出的产物 run_id 与回执不一致即判红",
+ "why": "按路径联表会把旧产物算成新产物",
+ "source": "同行对拍，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

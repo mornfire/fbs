@@ -1,0 +1,12 @@
+{
+ "id": "FBS-002",
+ "name": "FALLBACK_LABEL_LAUNDERING",
+ "layer": "判定层",
+ "claim": "判据设了「判不了」兜底档，可指认的硬违规被它吸收，等同变相通过",
+ "input_snapshot": "12 个场景夹具，其中 3 格为可指认违规（打开禁开容器、未登记角色出场、承诺到期未兑现）",
+ "expected_verdict": "RED",
+ "assertion": "对可指认违规必须判 FAIL 并写出被违反条目 id；若判成 UNDECIDABLE，判红",
+ "why": "兜底档成了吸收器，所有没想清楚的情况都被收进去",
+ "source": "本地盲判实验 v2，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

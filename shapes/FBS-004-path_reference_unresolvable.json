@@ -1,0 +1,12 @@
+{
+ "id": "FBS-004",
+ "name": "PATH_REFERENCE_UNRESOLVABLE",
+ "layer": "交付层",
+ "claim": "跨机交接用本机绝对路径引用证据，接收端解析不了，但字段全部合法",
+ "input_snapshot": "证据条目形如 C:\\\\work\\\\run7\\\\frame_0042.png，接收端为另一台机器",
+ "expected_verdict": "RED",
+ "assertion": "接收端必须能按条目重算摘要；无法重算即落 UNRESOLVED，不得默认通过",
+ "why": "字段合法与可验证是两件事",
+ "source": "本地事故，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

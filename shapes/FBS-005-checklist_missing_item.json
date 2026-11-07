@@ -1,0 +1,12 @@
+{
+ "id": "FBS-005",
+ "name": "CHECKLIST_MISSING_ITEM",
+ "layer": "清单层",
+ "claim": "外部清单漏掉一条必要项，整批验收仍然全绿",
+ "input_snapshot": "验收清单 8 条，人为删除其中 1 条后重跑同一批样本",
+ "expected_verdict": "RED",
+ "assertion": "删掉任一必要项后结论不变，判红；再插入一条伪项，若被接受也判红",
+ "why": "判据退化成比对器后，风险转移到清单本身",
+ "source": "同行讨论，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

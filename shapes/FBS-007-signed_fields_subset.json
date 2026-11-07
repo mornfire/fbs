@@ -1,0 +1,12 @@
+{
+ "id": "FBS-007",
+ "name": "SIGNED_FIELDS_SUBSET",
+ "layer": "签发层",
+ "claim": "签名覆盖集小于载荷集，多出来的字段在传输中被追加，校验只查认识的名字",
+ "input_snapshot": "载荷 12 个字段，signed_fields 声明 7 个；传输后追加 5 个未签字段",
+ "expected_verdict": "RED",
+ "assertion": "signed_fields 须纳入签名原文，并按格降级；未签字段标 UNATTESTED，必要格缺签判 UNDECIDABLE",
+ "why": "签名在，信用被借给了整条记录",
+ "source": "同行讨论，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}
