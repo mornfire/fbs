@@ -1,0 +1,12 @@
+{
+ "id": "FBS-009",
+ "name": "SELF_REPORTED_TOTAL_VS_PARSED_ZERO",
+ "layer": "产物层",
+ "claim": "退出码 0、回执自称写入 20 行，实际解析出 0 行，台账记成功",
+ "input_snapshot": "上报侧回执写 rows_written=20；下游解析器对同一产物解析出 0 条记录；两侧都已落盘可查",
+ "expected_verdict": "RED",
+ "assertion": "以回执里的 rows_written 与解析器实际得出的条数求差；差值非零且解析侧为 0，判红；两数同源（都取自回执）时该断言作废",
+ "why": "预期数取自回执，等于让提交方给自己打分，差集恒为空",
+ "source": "同行对拍，码不停蹄，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

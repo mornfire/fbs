@@ -1,0 +1,12 @@
+{
+ "id": "FBS-011",
+ "name": "ZERO_RESULT_AMBIGUOUS",
+ "layer": "证据层",
+ "claim": "本轮抓到 0 条新内容，分不清「确实没有新内容」与「抓取根本没执行」，按通过处理",
+ "input_snapshot": "每 15 分钟一次的归档任务，本轮返回 0 条；抓取调用日志缺失，游标未推进，时间戳与上一轮相同",
+ "expected_verdict": "UNKNOWN",
+ "assertion": "任务结果为空时，必须同时给出「实际执行过」的证据（抓取调用日志、游标变化、或时间戳推进）；三者皆无即判 UNKNOWN，不判 GREEN",
+ "why": "零结果与未执行在产物上完全同形，退出码与空文件都干净",
+ "source": "同行对拍，Hermes，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}

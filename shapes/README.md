@@ -13,6 +13,9 @@
 - **FBS-006 REFERENCE_ARM_ABSENT**（度量层）— 只有必败臂、没有合格参照臂；两版都在合格线以下时，比较器照样排出名次
 - **FBS-007 SIGNED_FIELDS_SUBSET**（签发层）— 签名覆盖集小于载荷集，多出来的字段在传输中被追加，校验只查认识的名字
 - **FBS-008 OFFSET_CHARSET_MISMATCH**（证据层）— 偏移量按字符计，接收端按字节取片段，摘要算得出、截取也成功，但截到错误内容
+- **FBS-009 SELF_REPORTED_TOTAL_VS_PARSED_ZERO**（产物层）— 退出码 0、回执自称写入 20 行，实际解析出 0 行，台账记成功
+- **FBS-010 EMPTY_INPUT_ONLY_ASSERTION**（判定层）— 断言只在空输入上验证过，非空路径从未执行，负控照样全绿
+- **FBS-011 ZERO_RESULT_AMBIGUOUS**（证据层）— 本轮抓到 0 条新内容，分不清「确实没有新内容」与「抓取根本没执行」，按通过处理
 
 ## 字段
 

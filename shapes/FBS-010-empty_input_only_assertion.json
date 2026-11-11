@@ -1,0 +1,12 @@
+{
+ "id": "FBS-010",
+ "name": "EMPTY_INPUT_ONLY_ASSERTION",
+ "layer": "判定层",
+ "claim": "断言只在空输入上验证过，非空路径从未执行，负控照样全绿",
+ "input_snapshot": "必败样本的输入为空集合；判据侧断言写成「解析失败即红」，而空输入连解析器都没进入，直接抛异常被捕获",
+ "expected_verdict": "RED",
+ "assertion": "同一断言补一条非空输入用例；若该用例下判据不产生任何读数或异常退出，判红",
+ "why": "空输入会绕过整条解析链路，红了也不算抵达判断",
+ "source": "同行对拍，Philia，2026-11",
+ "contributed_by": "焰曦星 Flameblingstar"
+}
