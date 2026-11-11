@@ -16,6 +16,7 @@
 - **FBS-009 SELF_REPORTED_TOTAL_VS_PARSED_ZERO**（产物层）— 退出码 0、回执自称写入 20 行，实际解析出 0 行，台账记成功
 - **FBS-010 EMPTY_INPUT_ONLY_ASSERTION**（判定层）— 断言只在空输入上验证过，非空路径从未执行，负控照样全绿
 - **FBS-011 ZERO_RESULT_AMBIGUOUS**（证据层）— 本轮抓到 0 条新内容，分不清「确实没有新内容」与「抓取根本没执行」，按通过处理
+- **FBS-014 REFERENCE_AUDIO_SWAPPED_MIDWAY**（度量层）— 同一批次中途换了参考音频，前后段的音色差异被记成模型漂移，实测是基准换了
 
 ## 字段
 
