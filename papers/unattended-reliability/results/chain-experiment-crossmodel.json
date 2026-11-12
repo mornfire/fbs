@@ -1,0 +1,509 @@
+{
+ "model": "glm-5.3-flash",
+ "model_b": "kimi-k2.6",
+ "fixture": "C:\\Users\\Wei\\Documents\\deepseek-harness\\default-workspace\\artifacts\\ncp-fixture-hardset8-v4.json",
+ "truth": [
+  "PASS",
+  "UNDECIDABLE",
+  "FAIL",
+  "UNDECIDABLE",
+  "FAIL",
+  "PASS",
+  "NOT_RUN",
+  "NOT_RUN"
+ ],
+ "rater_a": {
+  "labels": [
+   "PASS",
+   "FAIL",
+   "FAIL",
+   "PASS",
+   "FAIL",
+   "PASS",
+   "NOT_RUN",
+   "NOT_RUN"
+  ],
+  "hits": 6,
+  "raw": {
+   "1": {
+    "verdict": "PASS",
+    "anchor_ids": [],
+    "missing_fields": [],
+    "note": "持陈九书面授权开启，符合M2例外"
+   },
+   "2": {
+    "verdict": "FAIL",
+    "anchor_ids": [
+     "M3"
+    ],
+    "missing_fields": [],
+    "note": "M3已授权第二日夜间开启，开匣不构成违约"
+   },
+   "3": {
+    "verdict": "FAIL",
+    "anchor_ids": [
+     "M4"
+    ],
+    "missing_fields": [],
+    "note": "M4知情名单仅陈九、陈十，陆巡不得说出断指之事"
+   },
+   "4": {
+    "verdict": "PASS",
+    "anchor_ids": [],
+    "missing_fields": [],
+    "note": "开匣经授权，取出匣内之物无不变量约束"
+   },
+   "5": {
+    "verdict": "FAIL",
+    "anchor_ids": [
+     "C1",
+     "M6"
+    ],
+    "missing_fields": [],
+    "note": "M7承诺第三日前不离开营地，酒肆在营地之外"
+   },
+   "6": {
+    "verdict": "PASS",
+    "anchor_ids": [],
+    "missing_fields": [],
+    "note": "标注未发生的假设分支，与不变量一致"
+   },
+   "7": {
+    "verdict": "NOT_RUN",
+    "anchor_ids": [],
+    "missing_fields": [],
+    "note": "仅环境与氛围描写，无可比对断言"
+   },
+   "8": {
+    "verdict": "NOT_RUN",
+    "anchor_ids": [],
+    "missing_fields": [],
+    "note": "仅环境描写，无可比对断言"
+   }
+  }
+ },
+ "anchored": [
+  {
+   "run": 1,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "PASS",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 6,
+   "agree_with_a": 8,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "持有书面授权，符合M2例外条款"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M2",
+      "M3"
+     ],
+     "missing_fields": [],
+     "note": "M3已授权，开匣不构成违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "missing_fields": [],
+     "note": "陆巡不在M4知情名单中不得说出"
+    },
+    "4": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "无不变量禁止取出匣内之物"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "C1",
+      "M6"
+     ],
+     "missing_fields": [],
+     "note": "李恪违反C1不离开营地承诺"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "假设条件与台账不变量一致"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "仅环境氛围与日常活动描写"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境描写无断言"
+    }
+   }
+  },
+  {
+   "run": 2,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "PASS",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 6,
+   "agree_with_a": 8,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "note": "持陈九书面授权开启，符合M2例外条款"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M2"
+     ],
+     "note": "M2授权例外生效，开匣不违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "note": "陆巡不在M4知情名单中"
+    },
+    "4": {
+     "verdict": "PASS",
+     "note": "已获授权开启，取出动作未受约束"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M7"
+     ],
+     "note": "酒肆在营地外，违反不离开承诺"
+    },
+    "6": {
+     "verdict": "PASS",
+     "note": "假设未授权开匣恰违反M2规定"
+    },
+    "7": {
+     "verdict": "NOT_RUN"
+    },
+    "8": {
+     "verdict": "NOT_RUN"
+    }
+   }
+  },
+  {
+   "run": 3,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "PASS",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 6,
+   "agree_with_a": 8,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "持M3书面授权开启，符合M2例外条款"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M3"
+     ],
+     "missing_fields": [],
+     "note": "已有M3书面授权，开匣不构成违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "missing_fields": [],
+     "note": "陆巡非M4知情人，不得说出断指"
+    },
+    "4": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "开启经授权，取物无不变量禁止"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "C1"
+     ],
+     "missing_fields": [],
+     "note": "违反C1承诺，酒肆在营地之外"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "假设分支未发生，条件判断与规则一致"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境氛围描写，无可比对断言"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境描写，无可比对断言"
+    }
+   }
+  }
+ ],
+ "independent": [
+  {
+   "run": 1,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "UNDECIDABLE",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 7,
+   "agree_with_a": 7,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "符合M2授权例外及M3"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M2"
+     ],
+     "missing_fields": [],
+     "note": "M2规定授权开启不属违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "missing_fields": [],
+     "note": "陆巡不在M4知情人员名单"
+    },
+    "4": {
+     "verdict": "UNDECIDABLE",
+     "anchor_ids": [],
+     "missing_fields": [
+      "开启后取物权限"
+     ],
+     "note": "台账未记开启后可否取物"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M7",
+      "C1"
+     ],
+     "missing_fields": [],
+     "note": "违反不离开营地的承诺"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "未授权开启确属违规"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "无断言仅有氛围描写"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "无断言仅有氛围描写"
+    }
+   }
+  },
+  {
+   "run": 2,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "UNDECIDABLE",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 7,
+   "agree_with_a": 7,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "M3授权有效，与记录甲一致"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M2"
+     ],
+     "missing_fields": [],
+     "note": "M2规定授权除外，不构成违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "missing_fields": [],
+     "note": "陆巡非M4知情人，不得言说"
+    },
+    "4": {
+     "verdict": "UNDECIDABLE",
+     "anchor_ids": [],
+     "missing_fields": [
+      "授权是否包含取物"
+     ],
+     "note": "台账未记取出物品是否被允许"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "C1"
+     ],
+     "missing_fields": [],
+     "note": "违反C1不离开营地承诺"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "条件断言与封存规则相符"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境描写无断言"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境氛围描写"
+    }
+   }
+  },
+  {
+   "run": 3,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "PASS",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 6,
+   "agree_with_a": 8,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "授权开启且记录甲已确认"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M2",
+      "M3"
+     ],
+     "missing_fields": [],
+     "note": "已有书面授权，开启不违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "不变量2"
+     ],
+     "missing_fields": [],
+     "note": "陆巡不在 M4 知情名单中"
+    },
+    "4": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "台账未禁止授权开启后取物"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "C1",
+      "M7"
+     ],
+     "missing_fields": [],
+     "note": "违反不离开营地的承诺"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "假设条件符合不变量规定"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境氛围描写无断言"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境氛围描写无断言"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,474 @@
+{
+ "model": "glm-5.3-flash",
+ "fixture": "C:\\Users\\Wei\\Documents\\deepseek-harness\\default-workspace\\artifacts\\ncp-fixture-hardset8-v4.json",
+ "truth": [
+  "PASS",
+  "UNDECIDABLE",
+  "FAIL",
+  "UNDECIDABLE",
+  "FAIL",
+  "PASS",
+  "NOT_RUN",
+  "NOT_RUN"
+ ],
+ "rater_a": {
+  "labels": [
+   "PASS",
+   "FAIL",
+   "FAIL",
+   "PASS",
+   "FAIL",
+   "PASS",
+   "NOT_RUN",
+   "NOT_RUN"
+  ],
+  "hits": 6,
+  "raw": {
+   "1": {
+    "verdict": "PASS",
+    "anchor_ids": [
+     "M2",
+     "M3"
+    ],
+    "note": "M3书面授权使第三日前开启符合例外"
+   },
+   "2": {
+    "verdict": "FAIL",
+    "anchor_ids": [
+     "M3"
+    ],
+    "note": "称违约与M3授权开启的事实冲突"
+   },
+   "3": {
+    "verdict": "FAIL",
+    "anchor_ids": [
+     "M4"
+    ],
+    "note": "陆巡不在M4知情名单却说出断指"
+   },
+   "4": {
+    "verdict": "PASS",
+    "anchor_ids": [],
+    "note": "台账无禁止取出匣内之物的条目"
+   },
+   "5": {
+    "verdict": "FAIL",
+    "anchor_ids": [
+     "C1",
+     "M7",
+     "M6"
+    ],
+    "note": "第二日夜在营地外酒肆违反不离开营地承诺"
+   },
+   "6": {
+    "verdict": "PASS",
+    "anchor_ids": [
+     "M2"
+    ],
+    "note": "假设分支断言与不变量例外条款一致"
+   },
+   "7": {
+    "verdict": "NOT_RUN",
+    "anchor_ids": [],
+    "missing_fields": [],
+    "note": "仅环境与日常描写，无可比对断言"
+   },
+   "8": {
+    "verdict": "NOT_RUN",
+    "anchor_ids": [],
+    "missing_fields": [],
+    "note": "纯环境描写，无可比对断言"
+   }
+  }
+ },
+ "anchored": [
+  {
+   "run": 1,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "PASS",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 6,
+   "agree_with_a": 8,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [
+      "M3"
+     ],
+     "missing_fields": [],
+     "note": "M3书面授权第二日夜间开启一次，符合例外"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M3",
+      "M5"
+     ],
+     "missing_fields": [],
+     "note": "M5/M3显示开匣系依授权，称违约与事实冲突"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "missing_fields": [],
+     "note": "陆巡不在M4知情名单却说出断指"
+    },
+    "4": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "台账未禁止取出匣内之物，开启已获授权"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "C1",
+      "M6"
+     ],
+     "missing_fields": [],
+     "note": "M6酒肆在营地之外，违反C1第三日前不离营地"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "未发生的假设分支，其断言与例外条款不冲突"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "仅环境与日常描写，无可比对断言"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境描写，无可比对断言"
+    }
+   }
+  },
+  {
+   "run": 2,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "PASS",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 6,
+   "agree_with_a": 8,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "M3书面授权覆盖例外条款，与M5记录一致"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M3"
+     ],
+     "missing_fields": [],
+     "note": "M3授权使开启合规，称违约与例外条款冲突"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "missing_fields": [],
+     "note": "M4知情名单仅陈九陈十，陆巡不得说出断指"
+    },
+    "4": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "台账无禁止取出匣内之物的条目，开启合规"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "C1",
+      "M6"
+     ],
+     "missing_fields": [],
+     "note": "M6酒肆在营地外，违C1第三日前不离开营地"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "假设分支未发生，断言与不变量例外条款一致"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "仅环境与日常动作描写，无可比对断言"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境氛围描写，无可比对断言"
+    }
+   }
+  },
+  {
+   "run": 3,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "PASS",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 6,
+   "agree_with_a": 8,
+   "raw": {}
+  }
+ ],
+ "independent": [
+  {
+   "run": 1,
+   "labels": [
+    "UNDECIDABLE",
+    "FAIL",
+    "FAIL",
+    "UNDECIDED",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 5,
+   "agree_with_a": 6,
+   "raw": {
+    "1": {
+     "verdict": "UNDECIDABLE",
+     "anchor_ids": [],
+     "missing_fields": [
+      "how_李恪_obtained_key_M9"
+     ],
+     "note": "李恪无钥匙，台账未记其如何能开匣"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M3"
+     ],
+     "note": "M3已书面授权开启，该开启属例外，非违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "note": "陆巡不在M4知情名单却说出断指事实"
+    },
+    "4": {
+     "verdict": "UNDECIDED",
+     "anchor_ids": [],
+     "missing_fields": [
+      "how_李恪_obtained_key_M9"
+     ],
+     "note": "无钥匙却开匣取物，缺取得钥匙的记载"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M7",
+      "C1"
+     ],
+     "note": "第三日前李恪离营至城中酒肆，违承诺"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "note": "假设分支与不变量的授权例外一致"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "note": "仅环境与氛围描写，无可比对断言"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "note": "仅环境描写，无可比对断言"
+    }
+   }
+  },
+  {
+   "run": 2,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "PASS",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 6,
+   "agree_with_a": 8,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [
+      "M3"
+     ],
+     "missing_fields": [],
+     "note": "第二日夜开启有陈九书面授权，符合不变量例外"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M3",
+      "M5"
+     ],
+     "missing_fields": [],
+     "note": "M3『陈九已书面授权李恪在第二日夜间开启木匣一次』，开启合法不构成违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "missing_fields": [],
+     "note": "M4知情者仅陈九、陈十，陆巡不在名单却说出断指"
+    },
+    "4": {
+     "verdict": "PASS",
+     "anchor_ids": [
+      "M3"
+     ],
+     "missing_fields": [],
+     "note": "开启有授权，台账未禁止取出匣内之物"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "C1",
+      "M7",
+      "M6"
+     ],
+     "missing_fields": [],
+     "note": "C1承诺第三日前不离开营地，酒肆在营地外"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "假设分支内容与不变量的例外规则一致，未发生"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "仅环境与氛围描写，无可比对断言"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境描写，无可比对断言"
+    }
+   }
+  },
+  {
+   "run": 3,
+   "labels": [
+    "PASS",
+    "FAIL",
+    "FAIL",
+    "UNDECIDABLE",
+    "FAIL",
+    "PASS",
+    "NOT_RUN",
+    "NOT_RUN"
+   ],
+   "hits": 7,
+   "agree_with_a": 7,
+   "raw": {
+    "1": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "有M3书面授权，开匣符合不变量例外"
+    },
+    "2": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M3",
+      "M5"
+     ],
+     "missing_fields": [],
+     "note": "M3授权第二日夜间开匣，开匣不违约"
+    },
+    "3": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "M4"
+     ],
+     "missing_fields": [],
+     "note": "M4知情仅陈九、陈十，陆巡说出即违知情不变量"
+    },
+    "4": {
+     "verdict": "UNDECIDABLE",
+     "anchor_ids": [],
+     "missing_fields": [
+      "how_李恪_opened_box_given_M9"
+     ],
+     "note": "M9记李恪无钥匙，无记录其如何开匣"
+    },
+    "5": {
+     "verdict": "FAIL",
+     "anchor_ids": [
+      "C1",
+      "M6"
+     ],
+     "missing_fields": [],
+     "note": "C1承诺第三日前不离开营地，酒肆在营地外"
+    },
+    "6": {
+     "verdict": "PASS",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "假设分支与不变量一致，未发生不违约"
+    },
+    "7": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "仅氛围与日常描写，无可比对断言"
+    },
+    "8": {
+     "verdict": "NOT_RUN",
+     "anchor_ids": [],
+     "missing_fields": [],
+     "note": "纯环境描写，无可比对断言"
+    }
+   }
+  }
+ ]
+}
